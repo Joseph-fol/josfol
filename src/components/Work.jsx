@@ -1,136 +1,178 @@
 import React from 'react';
-import { ExternalLink } from 'lucide-react';
+import { ArrowUpRight, ExternalLink } from 'lucide-react';
 
-export default function Work() {
-  const projects = [
-    {
-      category: 'EDUCATIONAL INSTITUTIONS · EDTECH / SAAS · 2026',
-      title: 'Online CBT SaaS Platform',
-      badge: 'Concurrent exam traffic handled at scale',
-      stack: 'React, Node.js, MongoDB, Vercel',
-      features: 'Auto-submit timers, role-based admin workspaces, real-time state management',
-      outcome: 'Commercial-ready platform handling concurrent exam sessions with zero grade-processing errors',
-      liveUrl: 'https://onlinecbt.vercel.app',
-      displayUrl: 'onlinecbt.vercel.app',
-    },
-    {
-      category: 'CAMPUS ORGANIZATIONS · PROCUREMENT / EDTECH · 2026',
-      title: 'DMDAS: Digital Manual Distribution System',
-      badge: 'Manual procurement workflow fully digitized',
-      stack: 'Next.js, React, Node.js, MongoDB',
-      features: 'Digital inventory tracking, automated voucher/token redemption, student purchase verification',
-      outcome: 'Eliminated physical queue bottlenecks and fully digitized course manual fulfillment',
-      liveUrl: 'https://dmdas.com.ng',
-      displayUrl: 'dmdas.com.ng',
-    },
-    {
-      category: 'NIMI BAKERY · PEPPER SOUP KING · LOCAL BUSINESS / F&B · 2025',
-      title: 'Local Business Web Solutions',
-      badge: 'Improved digital footprint and local visibility',
-      stack: 'React, Tailwind CSS, SEO Optimization, Vercel',
-      features: 'Fast mobile-first storefront, digital menu ordering, automated WhatsApp order routing',
-      outcome: 'Boosted customer discoverability, higher conversions, and zero order drop-off',
-      liveUrl: 'https://nimibakery.vercel.app',
-      displayUrl: 'nimibakery.vercel.app',
-    },
-  ];
+const projects = [
+  {
+    number: '01',
+    category: 'EDTECH / SAAS',
+    title: 'Online CBT SaaS Platform',
+    description: 'A real-time examination platform built for reliable, concurrent sessions and zero grade-processing errors.',
+    stack: ['React', 'Node.js', 'MongoDB'],
+    liveUrl: 'https://onlinecbt.vercel.app',
+    displayUrl: 'onlinecbt.vercel.app',
+    image: null,
+    accent: 'orange',
+    visual: 'exam',
+  },
+  {
+    number: '02',
+    category: 'PROCUREMENT / EDTECH',
+    title: 'DMDAS',
+    description: 'A digital manual distribution system that replaces campus queues with trackable, verified fulfillment.',
+    stack: ['Next.js', 'Express', 'MongoDB'],
+    liveUrl: 'https://dmdas.com.ng',
+    displayUrl: 'dmdas.com.ng',
+    image: null,
+    accent: 'blue',
+    visual: 'inventory',
+  },
+  {
+    number: '03',
+    category: 'LOCAL BUSINESS / F&B',
+    title: 'Local Business Web Solutions',
+    description: 'Fast, mobile-first storefronts that turn local discovery into simple, direct WhatsApp orders.',
+    stack: ['React', 'Tailwind', 'SEO'],
+    liveUrl: 'https://nimibakery.vercel.app',
+    displayUrl: 'nimibakery.vercel.app',
+    image: null,
+    accent: 'green',
+    visual: 'orders',
+  },
+
+  {
+    number: '04',
+    category: 'LMS',
+    title: 'School Website',
+    description: 'A Fast, mobile-first storefronts that turn local discovery into simple, direct WhatsApp orders.',
+    stack: ['React', 'Tailwind', 'SEO'],
+    liveUrl: 'https://nimibakery.vercel.app',
+    displayUrl: 'nimibakery.vercel.app',
+    image: null,
+    accent: 'green',
+    visual: 'orders',
+  },
+];
+
+function ProductVisual({ type, accent, image, title }) {
+  if (image) {
+    return (
+      <div className={`work-visual work-visual-${accent} work-visual-image`}>
+        <img src={image} alt={`${title} preview`} />
+        <span className="work-visual-label">PROJECT PREVIEW</span>
+      </div>
+    );
+  }
 
   return (
-    <section id="work" data-aos="fade-up" data-aos-duration="1200" className="py-20 md:py-28 bg-[#0C0C0E] text-white">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-12">
-        
-        {/* Section Header */}
-        <div className="mb-14 md:mb-16">
-          <div className="text-xs md:text-sm font-semibold tracking-[0.2em] text-[#C45738] uppercase mb-3">
-            02 — MY WORK
+    <div className={`work-visual work-visual-${accent}`} aria-hidden="true">
+      <div className="work-visual-grid" />
+      <div className="work-window">
+        <div className="work-window-bar">
+          <span />
+          <span />
+          <span />
+          <b>{type === 'exam' ? 'exam / dashboard' : type === 'inventory' ? 'dmdas / inventory' : 'orders / today'}</b>
+        </div>
+        {type === 'exam' && (
+          <div className="work-exam-screen">
+            <div className="work-mini-sidebar">
+              <i />
+              <i />
+              <i />
+              <i />
+            </div>
+            <div className="work-screen-content">
+              <div className="work-screen-heading">
+                <strong>Mathematics CBT</strong>
+                <em>01:24:08</em>
+              </div>
+              <div className="work-question">
+                <span>Question 14 of 40</span>
+                <strong>Which value completes the sequence?</strong>
+                <div className="work-options"><i /><i /><i /></div>
+              </div>
+            </div>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white">
-            Recent builds and shipped systems
-          </h2>
+        )}
+        {type === 'inventory' && (
+          <div className="work-inventory-screen">
+            <div className="work-screen-heading"><strong>Distribution overview</strong><em>+ Add item</em></div>
+            <div className="work-chart"><i /><i /><i /><i /><i /><i /><i /></div>
+            <div className="work-data-lines"><i /><i /><i /></div>
+          </div>
+        )}
+        {type === 'orders' && (
+          <div className="work-orders-screen">
+            <div className="work-screen-heading"><strong>Good morning, Nimi</strong><em>•••</em></div>
+            <div className="work-order-feature"><span>Fresh from the oven</span><strong>Today's picks</strong></div>
+            <div className="work-food-cards"><i /><i /><i /></div>
+          </div>
+        )}
+      </div>
+      <div className="work-orbit work-orbit-one" />
+      <div className="work-orbit work-orbit-two" />
+      <span className="work-visual-label">{accent === 'orange' ? 'LIVE SYSTEM' : accent === 'blue' ? 'IN PROGRESS' : 'SHIPPED'}</span>
+    </div>
+  );
+}
+
+export default function Work() {
+  return (
+    <section id="work" className="work-section py-20 md:py-28">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-12">
+        <div className="work-heading-row" data-aos="fade-up">
+          <div>
+            <div className="section-kicker">02 — SPOTLIGHT</div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#141416]">
+              From the codebase
+            </h2>
+          </div>
+          <p className="work-heading-note">
+            A few systems I&apos;ve designed, built, and shipped into the real world.
+          </p>
         </div>
 
-        {/* Project Cards List */}
-        <div className="space-y-8">
-          {projects.map((project, idx) => (
-            <div
-              key={idx}
-              data-aos="zoom-in-up"
-              data-aos-delay={idx * 120}
-              className="bg-[#141417] border border-[#222228] rounded-2xl p-6 sm:p-8 md:p-10 transition-all hover:border-[#383842]"
+        <div className="work-grid">
+          {projects.map((project, index) => (
+            <article
+              key={project.title}
+              className={`work-card work-card-${project.accent}`}
+              data-aos="fade-up"
+              data-aos-delay={index * 120}
             >
-              {/* Top Row: Meta and Badge */}
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
-                <div>
-                  <div className="text-xs font-semibold tracking-[0.16em] text-[#C45738] uppercase mb-2">
-                    {project.category}
-                  </div>
-                  <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
-                    {project.title}
-                  </h3>
-                </div>
-
-                <div className="self-start md:self-auto">
-                  <span className="inline-block px-4 py-1.5 rounded-full border border-[#C45738] text-[#C45738] text-xs sm:text-sm font-medium">
-                    {project.badge}
-                  </span>
-                </div>
-              </div>
-
-              {/* 4-Box Specification Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
-                
-                {/* Stack */}
-                <div className="bg-[#0E0E10] border border-[#1C1C22] rounded-xl p-4 sm:p-5">
-                  <div className="text-[11px] font-semibold tracking-wider text-[#7E7E8A] uppercase mb-2">
-                    STACK
-                  </div>
-                  <p className="text-sm text-[#D4D4D8] font-medium leading-relaxed">
-                    {project.stack}
-                  </p>
-                </div>
-
-                {/* Key Features */}
-                <div className="bg-[#0E0E10] border border-[#1C1C22] rounded-xl p-4 sm:p-5">
-                  <div className="text-[11px] font-semibold tracking-wider text-[#7E7E8A] uppercase mb-2">
-                    KEY FEATURES
-                  </div>
-                  <p className="text-sm text-[#D4D4D8] font-medium leading-relaxed">
-                    {project.features}
-                  </p>
-                </div>
-
-                {/* Outcome */}
-                <div className="bg-[#0E0E10] border border-[#1C1C22] rounded-xl p-4 sm:p-5">
-                  <div className="text-[11px] font-semibold tracking-wider text-[#7E7E8A] uppercase mb-2">
-                    OUTCOME
-                  </div>
-                  <p className="text-sm text-[#D4D4D8] font-medium leading-relaxed">
-                    {project.outcome}
-                  </p>
-                </div>
-
-                {/* Live URL */}
-                <div className="bg-[#0E0E10] border border-[#1C1C22] rounded-xl p-4 sm:p-5 flex flex-col justify-between">
-                  <div className="text-[11px] font-semibold tracking-wider text-[#7E7E8A] uppercase mb-2">
-                    LIVE URL
-                  </div>
-                  <a
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-sm font-medium text-[#C45738] hover:text-[#E07253] transition-colors break-all"
-                  >
-                    <span>{project.displayUrl}</span>
-                    <ExternalLink size={14} className="shrink-0" />
+              <ProductVisual
+                type={project.visual}
+                accent={project.accent}
+                image={project.image}
+                title={project.title}
+              />
+              <div className="work-card-body">
+                <div className="work-card-meta">
+                  <span>{project.number} / {project.category}</span>
+                  <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" aria-label={`Open ${project.title}`}>
+                    <ArrowUpRight size={18} />
                   </a>
                 </div>
-
+                <h3>{project.title}</h3>
+                <p>{project.description}</p>
+                <div className="work-card-footer">
+                  <div className="work-stack">
+                    {project.stack.map((item) => <span key={item}>{item}</span>)}
+                  </div>
+                  <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="work-link">
+                    <span>{project.displayUrl}</span>
+                    <ExternalLink size={13} />
+                  </a>
+                </div>
               </div>
-
-            </div>
+            </article>
           ))}
         </div>
 
+        <div className="work-bottom-line" data-aos="fade-up">
+          <span>More experiments, shipped every month.</span>
+          <span className="work-pulse"><i /> Available for a new build</span>
+        </div>
       </div>
     </section>
   );

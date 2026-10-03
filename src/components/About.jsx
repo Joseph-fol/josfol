@@ -60,11 +60,7 @@ export default function About() {
             </p>
 
             <p>
-              I build primarily on the MERN stack, Next.js, GraphQL, TypeScript and JavaScript , with a focus on shipping clean, maintainable code that solves real operational problems. In 2026, I engineered and deployed two full production systems: an Online CBT SaaS platform for educational institutions and a Digital Manual Distribution System (DMDAS) for campus procurement. Both went live, both handle real traffic.
-            </p>
-
-            <p>
-              Beyond the web, I've written an engineering proposal for a decentralized solar-powered water distribution network using GIS mapping, published technical project walkthroughs on DEV.to, and earned an AI Bootcamp certification from CEPHAS ICT HUB. I'm drawn to the kinds of problems where software actually changes how an organization operates, not just how it looks.
+              I build primarily on the MERN stack, Next.js, GraphQL, TypeScript and JavaScript, with a focus on shipping clean, maintainable code that solves real operational problems. In 2026, I engineered and deployed two full production systems: an Online CBT SaaS platform for educational institutions and a Digital Manual Distribution System (DMDAS) for campus procurement. Both went live, both handle real traffic.
             </p>
 
             <p className="pt-2 text-[#242220] font-medium italic">
