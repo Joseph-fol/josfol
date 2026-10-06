@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700">
+  <rect width="1200" height="700" fill="#dce6d9"/>
+  <circle cx="1050" cy="80" r="240" fill="#fff" opacity=".22"/>
+  <circle cx="100" cy="650" r="260" fill="#fff" opacity=".18"/>
+  <rect x="145" y="105" width="910" height="500" rx="22" fill="#fff" stroke="#c8d8c5" stroke-width="4"/>
+  <rect x="145" y="105" width="910" height="70" rx="22" fill="#30412f"/>
+  <circle cx="190" cy="140" r="10" fill="#f3d39e"/>
+  <text x="225" y="148" font-family="Arial" font-size="23" font-weight="bold" fill="#fff">EXCELLENCE ACADEMY</text>
+  <text x="205" y="250" font-family="Arial" font-size="42" font-weight="bold" fill="#30412f">Learn. Grow. Lead.</text>
+  <text x="205" y="295" font-family="Arial" font-size="19" fill="#70806d">A modern learning community for every student.</text>
+  <rect x="205" y="350" width="210" height="58" rx="29" fill="#c45738"/>
+  <text x="258" y="387" font-family="Arial" font-size="18" font-weight="bold" fill="#fff">Explore school</text>
+  <rect x="700" y="235" width="230" height="230" rx="115" fill="#f2d8bd"/>
+  <path d="M770 365l45-65 45 65z" fill="#c45738"/><circle cx="815" cy="270" r="35" fill="#f0bd96"/>
+</svg>

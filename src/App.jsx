@@ -11,6 +11,7 @@ import Writing from './components/Writing';
 import FinalCTA from './components/FinalCTA';
 import Footer from './components/Footer';
 import ProjectModal from './components/ProjectModal';
+import AllWork from './components/AllWork';
 
 export default function App() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -25,6 +26,10 @@ export default function App() {
       mirror: false,
     });
   }, []);
+
+  if (window.location.pathname === '/work') {
+    return <AllWork />;
+  }
 
   const handleOpenModal = () => {
     setSelectedService('');

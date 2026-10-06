@@ -1,16 +1,22 @@
 import React from 'react';
 import { ArrowUpRight, ExternalLink } from 'lucide-react';
+import onlinecbt from '../assets/onlinecbt.png';
+import dmdas from '../assets/dmdas.png';
+import bakeryPreview from '../assets/nimibackery.png';
+import excellenceacademy from '../assets/excellenceacademy.png';
+import foodu from '../assets/foodu.png';
+import tuitioncalculator from '../assets/tuitioncalculator.png';
 
-const projects = [
+export const projects = [
   {
     number: '01',
     category: 'EDTECH / SAAS',
     title: 'Online CBT SaaS Platform',
-    description: 'A real-time examination platform built for reliable, concurrent sessions and zero grade-processing errors.',
-    stack: ['React', 'Node.js', 'MongoDB'],
+    description: 'A real-time examination platform built for reliable, concurrent test sessions, timed state management, and zero grade-processing errors.',
+    stack: ['React', 'TypeScript', 'Node.js', 'MongoDB'],
     liveUrl: 'https://onlinecbt.vercel.app',
     displayUrl: 'onlinecbt.vercel.app',
-    image: null,
+    image: onlinecbt,
     accent: 'orange',
     visual: 'exam',
   },
@@ -18,47 +24,69 @@ const projects = [
     number: '02',
     category: 'PROCUREMENT / EDTECH',
     title: 'DMDAS',
-    description: 'A digital manual distribution system that replaces campus queues with trackable, verified fulfillment.',
-    stack: ['Next.js', 'Express', 'MongoDB'],
+    description: 'A digital manual distribution system replacing campus queue bottlenecks with trackable, verified student procurement and fulfillment.',
+    stack: ['Next.js', 'Express.js', 'MongoDB', 'Tailwind CSS'],
     liveUrl: 'https://dmdas.com.ng',
     displayUrl: 'dmdas.com.ng',
-    image: null,
+    image: dmdas,
     accent: 'blue',
     visual: 'inventory',
   },
   {
     number: '03',
     category: 'LOCAL BUSINESS / F&B',
-    title: 'Local Business Web Solutions',
-    description: 'Fast, mobile-first storefronts that turn local discovery into simple, direct WhatsApp orders.',
-    stack: ['React', 'Tailwind', 'SEO'],
+    title: 'Nimi Bakery Web Platform',
+    description: 'A mobile-first catalog and storefront designed to turn local bakery discovery into direct WhatsApp customer orders.',
+    stack: ['React', 'Tailwind CSS', 'SEO'],
     liveUrl: 'https://nimibakery.vercel.app',
     displayUrl: 'nimibakery.vercel.app',
-    image: null,
-    accent: 'green',
-    visual: 'orders',
+    image: bakeryPreview,
+    accent: 'amber',
+    visual: 'storefront',
   },
-
   {
     number: '04',
-    category: 'LMS',
-    title: 'School Website',
-    description: 'A Fast, mobile-first storefronts that turn local discovery into simple, direct WhatsApp orders.',
-    stack: ['React', 'Tailwind', 'SEO'],
-    liveUrl: 'https://nimibakery.vercel.app',
-    displayUrl: 'nimibakery.vercel.app',
-    image: null,
-    accent: 'green',
-    visual: 'orders',
+    category: 'EDUCATION / INSTITUTIONAL',
+    title: 'Excellence Academy Portal',
+    description: 'An institutional web portal providing prospective students and parents with academic programs, admissions guidance, and campus announcements.',
+    stack: ['HTML5', 'Tailwind CSS', 'JavaScript'],
+    liveUrl: 'https://excellence-academy-five.vercel.app',
+    displayUrl: 'excellence-academy-five.vercel.app',
+    image: excellenceacademy,
+    accent: 'emerald',
+    visual: 'campus',
+  },
+  {
+    number: '05',
+    category: 'RESTAURANT / HOSPITALITY',
+    title: 'Food-U (Pepper Soup King)',
+    description: 'A responsive dining menu and contact portal highlighting kitchen specialties, location details, and direct takeaway ordering.',
+    stack: ['HTML5', 'CSS3', 'Bootstrap'],
+    liveUrl: 'https://food-u.vercel.app',
+    displayUrl: 'food-u.vercel.app',
+    image: foodu,
+    accent: 'red',
+    visual: 'menu',
+  },
+  {
+    number: '06',
+    category: 'FINTECH / UTILITY',
+    title: 'Tuition Fee Calculator',
+    description: 'A lightweight academic fee estimation tool computing dynamic departmental dues, faculty fees, and multi-tier institutional charges.',
+    stack: ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap'],
+    liveUrl: 'https://tuitionfeecalculator.vercel.app',
+    displayUrl: 'tuitionfeecalculator.vercel.app',
+    image: tuitioncalculator,
+    accent: 'purple',
+    visual: 'calculator',
   },
 ];
 
-function ProductVisual({ type, accent, image, title }) {
+export function ProductVisual({ type, accent, image, title }) {
   if (image) {
     return (
       <div className={`work-visual work-visual-${accent} work-visual-image`}>
         <img src={image} alt={`${title} preview`} />
-        <span className="work-visual-label">PROJECT PREVIEW</span>
       </div>
     );
   }
@@ -120,7 +148,7 @@ export default function Work() {
   return (
     <section id="work" className="work-section py-20 md:py-28">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-12">
-        <div className="work-heading-row" data-aos="fade-up">
+        <div className="work-heading-row">
           <div>
             <div className="section-kicker">02 — SPOTLIGHT</div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#141416]">
@@ -132,13 +160,16 @@ export default function Work() {
           </p>
         </div>
 
+        <div className="work-bottom-line">
+          <span className='text-sm'>More experiments, shipped every month.</span>
+          <a href="/work" className="work-view-all">View all work <ArrowUpRight size={14} /></a>
+        </div>
+
         <div className="work-grid">
-          {projects.map((project, index) => (
+          {projects.slice(0, 5).map((project) => (
             <article
               key={project.title}
               className={`work-card work-card-${project.accent}`}
-              data-aos="fade-up"
-              data-aos-delay={index * 120}
             >
               <ProductVisual
                 type={project.visual}
@@ -167,11 +198,6 @@ export default function Work() {
               </div>
             </article>
           ))}
-        </div>
-
-        <div className="work-bottom-line" data-aos="fade-up">
-          <span>More experiments, shipped every month.</span>
-          <span className="work-pulse"><i /> Available for a new build</span>
         </div>
       </div>
     </section>
