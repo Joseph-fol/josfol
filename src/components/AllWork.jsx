@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowLeft, ArrowUpRight, ExternalLink } from 'lucide-react';
 import { ProductVisual, projects } from './Work';
+import ScrollReveal from './ScrollReveal';
 
 const graphicWorks = [
   {
@@ -62,8 +63,9 @@ export default function AllWork() {
             <span className="all-work-count">{projects.length} projects</span>
           </div>
           <div className="work-grid">
-            {projects.map((project) => (
-              <article key={project.title} className={`work-card work-card-${project.accent}`}>
+            {projects.map((project, index) => (
+              <ScrollReveal key={project.title} delay={index * 70}>
+                <article className={`work-card work-card-${project.accent}`}>
                 <ProductVisual
                   type={project.visual}
                   accent={project.accent}
@@ -84,7 +86,8 @@ export default function AllWork() {
                     </a>
                   </div>
                 </div>
-              </article>
+                </article>
+              </ScrollReveal>
             ))}
           </div>
         </section>
@@ -98,15 +101,17 @@ export default function AllWork() {
             <span className="all-work-count">Design archive</span>
           </div>
           <div className="graphic-grid">
-            {graphicWorks.map((work) => (
-              <article key={work.title} className="graphic-card">
-                <GraphicVisual work={work} />
-                <div className="graphic-card-body">
-                  <span>{work.category}</span>
-                  <h3>{work.title}</h3>
-                  <p>{work.description}</p>
-                </div>
-              </article>
+            {graphicWorks.map((work, index) => (
+              <ScrollReveal key={work.title} delay={index * 90}>
+                <article className="graphic-card">
+                  <GraphicVisual work={work} />
+                  <div className="graphic-card-body">
+                    <span>{work.category}</span>
+                    <h3>{work.title}</h3>
+                    <p>{work.description}</p>
+                  </div>
+                </article>
+              </ScrollReveal>
             ))}
           </div>
         </section>

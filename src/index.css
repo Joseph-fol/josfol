@@ -56,6 +56,21 @@
   overflow: hidden;
 }
 
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(28px) scale(0.98);
+}
+
+.scroll-reveal.is-visible {
+  animation: scroll-card-in 650ms cubic-bezier(0.2, 0.75, 0.25, 1)
+    var(--reveal-delay) both;
+}
+
+.scroll-reveal > .work-card,
+.scroll-reveal > .graphic-card {
+  animation: none;
+}
+
 .work-heading-row {
   align-items: end;
   animation: work-content-in 300ms ease-out both;
@@ -491,7 +506,10 @@
 }
 .work-view-all {
   align-items: center;
+  background: transparent;
+  border: 0;
   color: #c45738;
+  cursor: pointer;
   display: inline-flex;
   font-size: 1.0rem;
   font-weight: 700;
@@ -510,6 +528,18 @@
     transform: translateY(0);
   }
 }
+
+@keyframes scroll-card-in {
+  from {
+    opacity: 0;
+    transform: translateY(28px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 @keyframes chart-pulse {
   0%,
   100% {
@@ -735,12 +765,15 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .scroll-reveal,
+  .scroll-reveal.is-visible,
   .work-heading-row,
   .work-card,
   .work-window,
   .work-card:hover .work-window {
     animation: none;
     transition: none;
+    opacity: 1;
     transform: none;
   }
   .work-chart i {

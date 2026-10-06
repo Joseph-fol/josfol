@@ -6,6 +6,7 @@ import bakeryPreview from '../assets/nimibackery.png';
 import excellenceacademy from '../assets/excellenceacademy.png';
 import foodu from '../assets/foodu.png';
 import tuitioncalculator from '../assets/tuitioncalculator.png';
+import ScrollReveal from './ScrollReveal';
 
 export const projects = [
   {
@@ -58,7 +59,7 @@ export const projects = [
   },
   {
     number: '05',
-    category: 'RESTAURANT / HOSPITALITY',
+    category: 'RESTAURANT',
     title: 'Food-U (Pepper Soup King)',
     description: 'A responsive dining menu and contact portal highlighting kitchen specialties, location details, and direct takeaway ordering.',
     stack: ['HTML5', 'CSS3', 'Bootstrap'],
@@ -82,6 +83,8 @@ export const projects = [
   },
 ];
 
+// const navigate = useNavigate()
+
 export function ProductVisual({ type, accent, image, title }) {
   if (image) {
     return (
@@ -90,6 +93,8 @@ export function ProductVisual({ type, accent, image, title }) {
       </div>
     );
   }
+
+  
 
   return (
     <div className={`work-visual work-visual-${accent}`} aria-hidden="true">
@@ -145,6 +150,10 @@ export function ProductVisual({ type, accent, image, title }) {
 }
 
 export default function Work() {
+  const navigateToWork = () => {
+    window.location.assign('/work');
+  };
+
   return (
     <section id="work" className="work-section py-20 md:py-28">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-12">
@@ -162,41 +171,44 @@ export default function Work() {
 
         <div className="work-bottom-line">
           <span className='text-sm'>More experiments, shipped every month.</span>
-          <a href="/work" className="work-view-all">View all work <ArrowUpRight size={14} /></a>
+          <button type="button" onClick={navigateToWork} className="work-view-all">
+            View all work <ArrowUpRight size={14} />
+          </button>
         </div>
 
         <div className="work-grid">
-          {projects.slice(0, 5).map((project) => (
-            <article
-              key={project.title}
+          {projects.slice(0, 5).map((project, index) => (
+            <ScrollReveal key={project.title} delay={index * 70}>
+              <article
               className={`work-card work-card-${project.accent}`}
-            >
-              <ProductVisual
-                type={project.visual}
-                accent={project.accent}
-                image={project.image}
-                title={project.title}
-              />
-              <div className="work-card-body">
-                <div className="work-card-meta">
-                  <span>{project.number} / {project.category}</span>
-                  <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" aria-label={`Open ${project.title}`}>
-                    <ArrowUpRight size={18} />
-                  </a>
-                </div>
-                <h3>{project.title}</h3>
-                <p>{project.description}</p>
-                <div className="work-card-footer">
-                  <div className="work-stack">
-                    {project.stack.map((item) => <span key={item}>{item}</span>)}
+              >
+                <ProductVisual
+                  type={project.visual}
+                  accent={project.accent}
+                  image={project.image}
+                  title={project.title}
+                />
+                <div className="work-card-body">
+                  <div className="work-card-meta">
+                    <span>{project.number} / {project.category}</span>
+                    <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" aria-label={`Open ${project.title}`}>
+                      <ArrowUpRight size={18} />
+                    </a>
                   </div>
-                  <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="work-link">
-                    <span>{project.displayUrl}</span>
-                    <ExternalLink size={13} />
-                  </a>
+                  <h3>{project.title}</h3>
+                  <p>{project.description}</p>
+                  <div className="work-card-footer">
+                    <div className="work-stack">
+                      {project.stack.map((item) => <span key={item}>{item}</span>)}
+                    </div>
+                    <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="work-link">
+                      <span>{project.displayUrl}</span>
+                      <ExternalLink size={13} />
+                    </a>
+                  </div>
                 </div>
-              </div>
-            </article>
+              </article>
+            </ScrollReveal>
           ))}
         </div>
       </div>
