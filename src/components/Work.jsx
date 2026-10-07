@@ -85,11 +85,19 @@ export const projects = [
 
 // const navigate = useNavigate()
 
-export function ProductVisual({ type, accent, image, title }) {
+export function ProductVisual({ type, accent, image, title, onImageClick }) {
   if (image) {
     return (
       <div className={`work-visual work-visual-${accent} work-visual-image`}>
-        <img src={image} alt={`${title} preview`} />
+        <button
+          type="button"
+          className="work-image-button"
+          onClick={onImageClick}
+          disabled={!onImageClick}
+          aria-label={`View ${title} image`}
+        >
+          <img src={image} alt={`${title} preview`} />
+        </button>
       </div>
     );
   }

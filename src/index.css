@@ -154,6 +154,17 @@
   width: 100%;
 }
 
+.work-image-button,
+.graphic-image-button {
+  background: transparent;
+  border: 0;
+  cursor: zoom-in;
+  display: block;
+  height: 100%;
+  padding: 0;
+  width: 100%;
+}
+
 .work-card:hover .work-visual-image img {
   transform: scale(1.06);
 }
@@ -630,6 +641,10 @@
   box-shadow: 0 18px 40px rgba(39, 31, 23, 0.1);
   transform: translateY(-6px);
 }
+.graphic-image-button {
+  color: inherit;
+  text-align: left;
+}
 .graphic-placeholder,
 .graphic-image {
   height: 20rem;
@@ -703,6 +718,91 @@
   font-size: 0.78rem;
   line-height: 1.65;
   margin-top: 0.45rem;
+}
+
+.work-lightbox {
+  align-items: center;
+  background: rgba(12, 12, 14, 0.48);
+  display: flex;
+  inset: 0;
+  justify-content: center;
+  padding: 1.5rem;
+  position: fixed;
+  z-index: 100;
+}
+.work-lightbox-panel {
+  background: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 1rem;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.2);
+  max-height: min(92vh, 860px);
+  max-width: 900px;
+  overflow: auto;
+  position: relative;
+  width: 100%;
+}
+.work-lightbox-close {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.9);
+  border: 0;
+  border-radius: 50%;
+  color: #242321;
+  cursor: pointer;
+  display: flex;
+  height: 2.3rem;
+  justify-content: center;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  width: 2.3rem;
+  z-index: 1;
+}
+.work-lightbox-close:hover {
+  background: #f1ece6;
+  color: #c45738;
+}
+.work-lightbox-image {
+  background: #eee9e1;
+  display: block;
+  max-height: 62vh;
+  object-fit: contain;
+  width: 100%;
+}
+.work-lightbox-details {
+  padding: 1.5rem 1.6rem 1.7rem;
+}
+.work-lightbox-details > span {
+  color: #a29a90;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+.work-lightbox-details h2 {
+  color: #161515;
+  font-size: clamp(1.35rem, 3vw, 2rem);
+  letter-spacing: -0.04em;
+  margin-top: 0.5rem;
+}
+.work-lightbox-details p {
+  color: #716b63;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  margin: 0.55rem 0 1.2rem;
+  max-width: 42rem;
+}
+.work-lightbox-cta {
+  align-items: center;
+  background: #c45738;
+  border-radius: 999px;
+  color: #fff;
+  display: inline-flex;
+  font-size: 0.78rem;
+  font-weight: 700;
+  gap: 0.4rem;
+  padding: 0.75rem 1rem;
+}
+.work-lightbox-cta:hover {
+  background: #9e3f26;
 }
 
 @media (max-width: 900px) {

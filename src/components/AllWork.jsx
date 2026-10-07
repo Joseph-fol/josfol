@@ -1,6 +1,9 @@
-import React from 'react';
-import { ArrowLeft, ArrowUpRight, ExternalLink } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { ArrowLeft, ArrowUpRight, ExternalLink, X } from 'lucide-react';
 import { ProductVisual, projects } from './Work';
+import Footer from './components/Footer';
+import graphic1 from '../assets/graphics/graphic1.jpg';
+import graphic2 from '../assets/graphics/graphic2.jpg';
 import ScrollReveal from './ScrollReveal';
 
 const graphicWorks = [
@@ -9,14 +12,14 @@ const graphicWorks = [
     category: 'BRANDING / IDENTITY',
     description: 'Visual identity directions, logo studies, and brand systems for growing businesses.',
     accent: 'orange',
-    image: null,
+    image: graphic1,
   },
   {
-    title: 'Social media campaigns',
+    title: 'media campaigns',
     category: 'CAMPAIGN DESIGN',
     description: 'Bold social graphics designed to make announcements and offers impossible to miss.',
     accent: 'blue',
-    image: null,
+    image: graphic2,
   },
   {
     title: 'Marketing materials',
@@ -42,6 +45,24 @@ function GraphicVisual({ work }) {
 }
 
 export default function AllWork() {
+  const [selectedWork, setSelectedWork] = useState(null);
+
+  useEffect(() => {
+    if (!selectedWork) return undefined;
+
+    const closeOnEscape = (event) => {
+      if (event.key === 'Escape') setSelectedWork(null);
+    };
+
+    document.addEventListener('keydown', closeOnEscape);
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      document.removeEventListener('keydown', closeOnEscape);
+      document.body.style.overflow = '';
+    };
+  }, [selectedWork]);
+
   return (
     <div className="all-work-page">
       <header className="all-work-header">
@@ -71,6 +92,7 @@ export default function AllWork() {
                   accent={project.accent}
                   image={project.image}
                   title={project.title}
+                  onImageClick={() => setSelectedWork(project)}
                 />
                 <div className="work-card-body">
                   <div className="work-card-meta">
@@ -104,7 +126,15 @@ export default function AllWork() {
             {graphicWorks.map((work, index) => (
               <ScrollReveal key={work.title} delay={index * 90}>
                 <article className="graphic-card">
-                  <GraphicVisual work={work} />
+                  <button
+                    type="button"
+                    className="graphic-image-button"
+                    onClick={work.image ? () => setSelectedWork(work) : undefined}
+                    disabled={!work.image}
+                    aria-label={`View ${work.title} image`}
+                  >
+                    <GraphicVisual work={work} />
+                  </button>
                   <div className="graphic-card-body">
                     <span>{work.category}</span>
                     <h3>{work.title}</h3>
@@ -116,6 +146,55 @@ export default function AllWork() {
           </div>
         </section>
       </main>
+
+      {selectedWork && (
+        <div
+          className="work-lightbox"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="work-lightbox-title"
+          onClick={() => setSelectedWork(null)}
+        >
+          <div className="work-lightbox-panel" onClick={(event) => event.stopPropagation()}>
+            <button
+              type="button"
+              className="work-lightbox-close"
+              onClick={() => setSelectedWork(null)}
+              aria-label="Close image preview"
+            >
+              <X size={20} />
+            </button>
+            <img
+              src={selectedWork.image}
+              alt={`${selectedWork.title} full preview`}
+              className="work-lightbox-image"
+            />
+            <div className="work-lightbox-details">
+              <span>{selectedWork.category}</span>
+              <h2 id="work-lightbox-title">{selectedWork.title}</h2>
+              <p>{selectedWork.description}</p>
+              {selectedWork.liveUrl ? (
+                <a
+                  href={selectedWork.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="work-lightbox-cta"
+                >
+                  View live project <ArrowUpRight size={16} />
+                </a>
+              ) : (
+                <a href="mailto:olawoyinjoseph05@gmail.com" className="work-lightbox-cta">
+                  Start a similar project <ArrowUpRight size={16} />
+                </a>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
+
+  <div>
+    <Footer/>
+  </div>
 }
