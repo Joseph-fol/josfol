@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { ArrowLeft, ArrowUpRight, ExternalLink, X } from 'lucide-react';
 import { ProductVisual, projects } from './Work';
-import Footer from './components/Footer';
 import graphic1 from '../assets/graphics/graphic1.jpg';
 import graphic2 from '../assets/graphics/graphic2.jpg';
+import graphic3 from '../assets/graphics/graphic3.jpg';
+
+import graphic4 from '../assets/graphics/graphic4.jpg';
+import graphic5 from '../assets/graphics/graphic5.jpg';
+import graphic6 from '../assets/graphics/graphic6.jpg';
+
 import ScrollReveal from './ScrollReveal';
 
 const graphicWorks = [
@@ -26,7 +31,30 @@ const graphicWorks = [
     category: 'PRINT / DIGITAL',
     description: 'Clean promotional layouts for flyers, event materials, and digital campaigns.',
     accent: 'green',
-    image: null,
+    image: graphic3,
+  },
+
+  // Row two
+  {
+    title: 'Brand identity explorations',
+    category: 'BRANDING / IDENTITY',
+    description: 'Visual identity directions, logo studies, and brand systems for growing businesses.',
+    accent: 'orange',
+    image: graphic4,
+  },
+  {
+    title: 'media campaigns',
+    category: 'CAMPAIGN DESIGN',
+    description: 'Bold social graphics designed to make announcements and offers impossible to miss.',
+    accent: 'blue',
+    image: graphic5,
+  },
+  {
+    title: 'Marketing materials',
+    category: 'PRINT / DIGITAL',
+    description: 'Clean promotional layouts for flyers, event materials, and digital campaigns.',
+    accent: 'green',
+    image: graphic6,
   },
 ];
 
@@ -194,7 +222,6 @@ export default function AllWork() {
     </div>
   );
 
-  <div>
     <Footer/>
-  </div>
+  
 }
